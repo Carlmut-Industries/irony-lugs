@@ -10,3 +10,7 @@ jobs:
         uses: Carlmut-Industries/openscad-docker-action@main
         with:
           root_file: adapter-22mm.scad
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "/tmp/output.stl,/tmp/render.png"
+          token: ${{ secrets.GITHUB_TOKEN }}
