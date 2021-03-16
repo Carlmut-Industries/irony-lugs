@@ -1,0 +1,22 @@
+name: Create Release
+
+on: 
+  push:
+    tags:
+    - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Build STL
+        uses: Carlmut-Industries/openscad-docker-action@master
+        with:
+          root_file: adapter-22mm.scad
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "output.stl"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: output.stl
