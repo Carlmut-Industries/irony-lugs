@@ -8,7 +8,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Build STL
-        uses: Carlmut-Industries/openscad-docker-action@master
+        uses: Carlmut-Industries/openscad-docker-action@main
         with:
           root_file: adapter-22mm.scad
       - name: Archive production artifacts
