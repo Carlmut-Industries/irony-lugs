@@ -12,5 +12,5 @@ jobs:
           root_file: adapter-22mm.scad
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "/tmp/output.stl,/tmp/render.png"
+          artifacts: "/tmp/output.stl"
           token: ${{ secrets.GITHUB_TOKEN }}
