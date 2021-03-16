@@ -1,5 +1,8 @@
 name: Build STL
-on: [push, workflow_dispatch]
+on:
+  push:
+    tags:
+    - '*'
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -10,9 +13,8 @@ jobs:
         uses: Carlmut-Industries/openscad-docker-action@debug
         with:
           root_file: adapter-22mm.scad
-      - uses: ncipollo/release-action@v1
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
         with:
-          commit: main
-          prerelease: true
-          artifacts: "/tmp/output.stl"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Compiled STL
+          path: /tmp/output.stl
